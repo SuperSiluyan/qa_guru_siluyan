@@ -16,6 +16,7 @@ public class TestForm {
         Configuration.baseUrl = "https://demoqa.com/";
 
     }
+
     @Test
     void fillTestForm() {
 
@@ -23,7 +24,6 @@ public class TestForm {
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
         $("#firstName").setValue("Andrey");
-        $("#lastName").setValue("Siluyanov");
         $("[id=userEmail]").setValue("Siluyan_and@mail.ru");
         $x("//label[@for='gender-radio-1']").click();
         $("[id=userNumber]").setValue("9011111111");
