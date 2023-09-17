@@ -1,21 +1,29 @@
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Configuration;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
+
 public class TestForm {
-    @Test
-    void FillTestForm() {
+    @BeforeAll
+    static void beforeAll() {
         Configuration.pageLoadStrategy = "eager";
-        Configuration.browserSize="1920x1080";
-        Configuration.holdBrowserOpen = true;
+        Configuration.browserSize = "1920x1080";
+        Configuration.baseUrl = "https://demoqa.com/";
+
+    }
+    @Test
+    void fillTestForm() {
 
         open("https://demoqa.com/automation-practice-form");
-        $("[id=firstName]").setValue("Andrey");
-        $("[id=lastName]").setValue("Siluyanov");
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
+        $("#firstName").setValue("Andrey");
+        $("#lastName").setValue("Siluyanov");
         $("[id=userEmail]").setValue("Siluyan_and@mail.ru");
         $x("//label[@for='gender-radio-1']").click();
         $("[id=userNumber]").setValue("9011111111");
@@ -26,16 +34,16 @@ public class TestForm {
         $("[id='subjectsInput']").setValue("Maths");
         $("[id=react-select-2-option-0]").click();
         $("[for=hobbies-checkbox-1]").click();
-        $("[id=uploadPicture]").sendKeys("C:\\b.jpg");
+        $("#uploadPicture").uploadFromClasspath("b.jpg");
         $("[id=currentAddress]").setValue("Russia Yaroslavl");
-       ///$x("//class[contains@text()='State']").click();
-       $("[id=state]").click();
+        $("[id=state]").click();
         $x("//*[.='NCR']").click();
         $("[id=city]").click();
         $x("//*[.='Delhi']").click();
         $("[id=submit]").click();
 
-       $("[class=modal-content]").shouldHave(text("Andrey Siluyanov"));
+        //Проверка текста
+        $("[class=modal-content]").shouldHave(text("Andrey Siluyanov"));
         $("[class=modal-content]").shouldHave(text("Siluyan_and@mail.ru"));
         $("[class=modal-content]").shouldHave(text("Male"));
         $("[class=modal-content]").shouldHave(text("9011111111"));
@@ -45,15 +53,5 @@ public class TestForm {
         $("[class=modal-content]").shouldHave(text("b.jpg"));
         $("[class=modal-content]").shouldHave(text("Russia Yaroslavl"));
         $("[class=modal-content]").shouldHave(text("NCR Delhi"));
-
-
-
-
-
-
-
-
-
-
     }
 }

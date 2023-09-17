@@ -7,6 +7,7 @@ build/
 .iws
 .iml
 .ipr
+qa_guru_siluyan.iml
 
 .gradle
 # Ignore Gradle build output directory
