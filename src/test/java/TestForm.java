@@ -10,10 +10,12 @@ import static com.codeborne.selenide.Selenide.*;
 public class TestForm {
     @BeforeAll
     static void beforeAll() {
-        Configuration.pageLoadStrategy = "eager";
-        Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com/";
-        Configuration.holdBrowserOpen =true;
+
+        //Опционально, для отладки
+        //Configuration.pageLoadStrategy = "eager";
+        // Configuration.browserSize = "1920x1080";
+        //Configuration.holdBrowserOpen =true;
 
     }
 
@@ -31,7 +33,7 @@ public class TestForm {
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOptionContainingText("March");
         $(".react-datepicker__year-select").selectOptionContainingText("1991");
-        $(".react-datepicker__day react-datepicker__day--005").click();
+        $(".react-datepicker__day--005").click();
         $("#subjectsInput").setValue("Maths");
         $("#react-select-2-option-0").click();
         $("[for=hobbies-checkbox-1]").click();
