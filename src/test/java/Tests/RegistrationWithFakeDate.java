@@ -23,6 +23,7 @@ public class RegistrationWithFakeDate extends TestBase {
         String userEmail = faker.internet().emailAddress();
         String streetAddress = faker.address().streetAddress();
         String userNumber = faker.phoneNumber().subscriberNumber(10);
+        Integer dayOfBirth = faker.number().numberBetween(01,28);
 
 
         // Заполнение формы
@@ -32,7 +33,7 @@ public class RegistrationWithFakeDate extends TestBase {
                 .setEmail(userEmail)
                 .setGender("Male")
                 .setUserNumber(userNumber)
-                .setDateOfBirth("05", "March", "1991")
+                .setDateOfBirthWithFaker(dayOfBirth, "March", "1991")
                 .setSubjectValue("Maths")
                 .subjectClick()
                 .hobbiesClick()
@@ -49,7 +50,7 @@ public class RegistrationWithFakeDate extends TestBase {
                 .checkResult("Student Email", userEmail)
                 .checkResult("Mobile", userNumber)
                 .checkResult("Gender", "Male")
-                .checkResult("Date of Birth", "05 March,1991")
+                .checkResult("Date of Birth", dayOfBirth + " March,1991")
                 .checkResult("Subjects", "Maths")
                 .checkResult("Hobbies", "Sports")
                 .checkResult("Picture", "b.jpg")

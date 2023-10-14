@@ -80,6 +80,13 @@ public class RegistrationPage {
         return this;
     }
 
+    public RegistrationPage setDateOfBirthWithFaker(Integer valueDay, String valueMonth, String valueYear) {
+        $("#dateOfBirthInput").click();
+        calendar.setDateWithFaker(valueDay, valueMonth, valueYear);
+
+        return this;
+    }
+
     public RegistrationPage setSubjectValue(String value) {
         subjectInput.setValue(value);
 
