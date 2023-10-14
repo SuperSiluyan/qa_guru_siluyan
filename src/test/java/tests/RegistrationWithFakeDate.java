@@ -1,39 +1,30 @@
 
 
-import Pages.RegistrationPage;
-import com.github.javafaker.Faker;
+import pages.components.GenerateTestData;
+import pages.RegistrationPage;
 import org.junit.jupiter.api.Test;
-import Tests.TestBase;
-
-import java.util.Locale;
+import tests.TestBase;
 
 
 public class RegistrationWithFakeDate extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
-
+    GenerateTestData generateTestData = new GenerateTestData();
 
     @Test
     void fillTestForm() {
 
-        Faker faker = new Faker(new Locale("en-GB"));
 
-        String firstName = faker.name().firstName();
-        String lastName = faker.name().lastName();
-        String userEmail = faker.internet().emailAddress();
-        String streetAddress = faker.address().streetAddress();
-        String userNumber = faker.phoneNumber().subscriberNumber(10);
-        Integer dayOfBirth = faker.number().numberBetween(01,28);
 
 
         // Заполнение формы
         registrationPage.openPage()
-                .setFirstName(firstName)
+                .setFirstName(generateTestData.firstName)
                 .setLastName(lastName)
                 .setEmail(userEmail)
                 .setGender("Male")
                 .setUserNumber(userNumber)
-                .setDateOfBirthWithFaker(dayOfBirth, "March", "1991")
+                .setDateOfBirthWithFaker(dayOfBirth, "March", yearOfBirth)
                 .setSubjectValue("Maths")
                 .subjectClick()
                 .hobbiesClick()

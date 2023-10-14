@@ -1,7 +1,7 @@
 
-import Pages.RegistrationPage;
+import pages.RegistrationPage;
 
-import Tests.TestBase;
+import tests.TestBase;
 
 import org.junit.jupiter.api.Test;
 
@@ -14,6 +14,7 @@ public class RegistrationWithPageObjects extends TestBase {
 
       // Заполнение формы
        registrationPage.openPage()
+                .hideBanner()
                 .setFirstName("Andrey")
                 .setLastName("Siluyanov")
                 .setEmail("Siluyan_and@mail.ru")

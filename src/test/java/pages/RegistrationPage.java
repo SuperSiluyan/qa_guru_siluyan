@@ -1,6 +1,6 @@
-package Pages;
+package pages;
 
-import Pages.Components.CalendarComponent;
+import pages.components.CalendarComponent;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.text;
@@ -31,7 +31,12 @@ public class RegistrationPage {
     ///// Actions
     public RegistrationPage openPage() {
         open("automation-practice-form");
-        titleLabel.shouldHave(text("Student Registration Form"));
+
+
+
+        return this;
+    }    public RegistrationPage hideBanner() {
+
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
 
@@ -45,9 +50,6 @@ public class RegistrationPage {
         return this;
     }
 
-//    public void clickFirstName() { // not used
-//        firstNameInput.click();
-//    }
 
     public RegistrationPage setLastName(String value) {
         lastNameInput.setValue(value);
@@ -75,12 +77,12 @@ public class RegistrationPage {
 
     public RegistrationPage setDateOfBirth(String day, String month, String year) {
         $("#dateOfBirthInput").click();
-        calendar.setDate("05", "March", "1991");
+        calendar.setDate(day, month, month);
 
         return this;
     }
 
-    public RegistrationPage setDateOfBirthWithFaker(Integer valueDay, String valueMonth, String valueYear) {
+    public RegistrationPage setDateOfBirthWithFaker(Integer valueDay, String valueMonth, Integer valueYear) {
         $("#dateOfBirthInput").click();
         calendar.setDateWithFaker(valueDay, valueMonth, valueYear);
 
