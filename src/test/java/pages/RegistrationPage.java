@@ -82,7 +82,7 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setDateOfBirthWithFaker(Integer valueDay, String valueMonth, Integer valueYear) {
+    public RegistrationPage setDateOfBirthWithFaker(Integer valueDay, String valueMonth, int valueYear) {
         $("#dateOfBirthInput").click();
         calendar.setDateWithFaker(valueDay, valueMonth, valueYear);
 
