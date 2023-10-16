@@ -6,33 +6,33 @@ import java.util.Locale;
 
 public class GenerateTestData {
 
-    Faker faker = new Faker(new Locale("en-GB"));
+    static Faker faker = new Faker(new Locale("en-GB"));
 
-    public String generateRandomSubject() {
+    public static String generateRandomSubject() {
         String[] subjects = {"Maths", "English", "Chemistry", "Computer science", "Commerce", "Economics"};
         int n = faker.number().numberBetween(0, subjects.length);
         return (subjects[n]);
     }
 
-    public String generateRandomMonth() {
+    public static String generateRandomMonth() {
         String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November"};
         int n = faker.number().numberBetween(0, months.length);
         return (months[n]);
     }
 
-    public String generateRandomGender() {
+    public static String generateRandomGender() {
         String[] genders = {"Male", "Female", "Other"};
         int n = faker.number().numberBetween(0, genders.length);
         return (genders[n]);
     }
 
-    public String generateRandomState() {
+    public static String generateRandomState() {
         String[] states = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"};
         int n = faker.number().numberBetween(0, states.length);
         return (states[n]);
     }
 
-    public String generateRandomCity(String randomState) {
+    public static String generateRandomCity(String randomState) {
         String[] ncrCity = {"Delhi", "Gurgaon", "Noida"};
         String[] uttarPradeshCity = {"Agra", "Lucknow", "Merrut"};
         String[] haryanaCity = {"Karnal", "Panipat"};

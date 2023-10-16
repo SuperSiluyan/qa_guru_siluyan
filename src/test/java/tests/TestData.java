@@ -1,11 +1,12 @@
 package tests;
 
 import com.github.javafaker.Faker;
-import utils.GenerateTestData;
 
 import java.util.Locale;
 
-public class TestData extends GenerateTestData {
+import static utils.GenerateTestData.*;
+
+public class TestData {
 
     Faker faker = new Faker(new Locale("en-GB"));
 
@@ -19,6 +20,8 @@ public class TestData extends GenerateTestData {
     public int
             fakeDayOfBirth = faker.number().numberBetween(10, 28),
             fakeYearOfBirth = faker.number().numberBetween(10, 99);
+
+
 
     public String randomSubject = generateRandomSubject();
     public String randomMonth = generateRandomMonth();
