@@ -22,7 +22,6 @@ public class RegistrationWithFakeDate extends TestBase {
         generateTestData.generateRandomCity();
 
 
-
         // Заполнение формы
         registrationPage.openPage()
                 .setFirstName(generateTestData.fakeFirstName)

@@ -1,4 +1,5 @@
 package tests;
+
 import pages.RegistrationPage;
 
 import tests.TestBase;
@@ -12,8 +13,8 @@ public class RegistrationWithPageObjects extends TestBase {
     @Test
     void fillTestForm() {
 
-      // Заполнение формы
-       registrationPage.openPage()
+        // Заполнение формы
+        registrationPage.openPage()
                 .hideBanner()
                 .setFirstName("Andrey")
                 .setLastName("Siluyanov")
