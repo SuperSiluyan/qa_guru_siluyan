@@ -1,58 +1,44 @@
 package tests;
 
-import pages.components.GenerateTestData;
 import pages.RegistrationPage;
 import org.junit.jupiter.api.Test;
-import tests.TestBase;
 
 
 public class RegistrationWithFakeDate extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
-    GenerateTestData generateTestData = new GenerateTestData();
-
+    TestData testData = new TestData();
 
     @Test
     void fillTestForm() {
 
-        generateTestData.generateRandomSubject();
-        generateTestData.generateRandomMonth();
-        generateTestData.generateRandomGender();
-        generateTestData.generateRandomState();
-        generateTestData.generateRandomCity();
-
-
         // Заполнение формы
         registrationPage.openPage()
-                .setFirstName(generateTestData.fakeFirstName)
-                .setLastName(generateTestData.fakeLastName)
-                .setEmail(generateTestData.fakeUserEmail)
-                .setGender(generateTestData.randomGender)
-                .setUserNumber(generateTestData.fakeUserNumber)
-                .setDateOfBirth(generateTestData.fakeDayOfBirth, generateTestData.randomMonth, generateTestData.fakeYearOfBirth)
-                .setSubjectValue(generateTestData.randomSubject)
+                .setFirstName(testData.fakeFirstName)
+                .setLastName(testData.fakeLastName)
+                .setEmail(testData.fakeUserEmail)
+                .setGender(testData.randomGender)
+                .setUserNumber(testData.fakeUserNumber)
+                .setDateOfBirth(testData.fakeDayOfBirth, testData.randomMonth, testData.fakeYearOfBirth)
+                .setSubjectValue(testData.randomSubject)
                 .subjectClick()
                 .hobbiesClick()
                 .uploadPicture("b.jpg")
-                .setAddress(generateTestData.fakeStreetAddress)
-                .setState(generateTestData.randomState)
-                .setCity(generateTestData.randomCity)
+                .setAddress(testData.fakeStreetAddress)
+                .setState(testData.randomState)
+                .setCity(testData.randomCity)
                 .clickSubmit();
 
-
         //Проверка контента
-
-        registrationPage.checkResult("Student Name", generateTestData.fakeFirstName + ' ' + generateTestData.fakeLastName)
-                .checkResult("Student Email", generateTestData.fakeUserEmail)
-                .checkResult("Mobile", generateTestData.fakeUserNumber)
-                .checkResult("Gender", generateTestData.randomGender)
-                .checkResult("Date of Birth", generateTestData.fakeDayOfBirth + " " + generateTestData.randomMonth + ',' + "19" + generateTestData.fakeYearOfBirth)
-                .checkResult("Subjects", generateTestData.randomSubject)
+        registrationPage.checkResult("Student Name", testData.fakeFirstName + ' ' + testData.fakeLastName)
+                .checkResult("Student Email", testData.fakeUserEmail)
+                .checkResult("Mobile", testData.fakeUserNumber)
+                .checkResult("Gender", testData.randomGender)
+                .checkResult("Date of Birth", testData.fakeDayOfBirth + " " + testData.randomMonth + ',' + "19" + testData.fakeYearOfBirth)
+                .checkResult("Subjects", testData.randomSubject)
                 .checkResult("Hobbies", "Sports")
                 .checkResult("Picture", "b.jpg")
-                .checkResult("Address", generateTestData.fakeStreetAddress)
-                .checkResult("State and City", generateTestData.randomState + " " + generateTestData.randomCity);
+                .checkResult("Address", testData.fakeStreetAddress)
+                .checkResult("State and City", testData.randomState + " " + testData.randomCity);
     }
-
-
 }
