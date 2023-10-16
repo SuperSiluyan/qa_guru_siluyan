@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class RegistrationPage {
     ///// SelenideElements
     CalendarComponent calendar = new CalendarComponent();
-    SelenideElement titleLabel = $(".practice-form-wrapper"),
+    SelenideElement
             firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
             userEmailInput = $("#userEmail"),
@@ -21,10 +21,9 @@ public class RegistrationPage {
             hobbiesSports = $("[for=hobbies-checkbox-1]"),
             imageInput = $("#uploadPicture"),
             addressInput = $("#currentAddress"),
-            stateSelect = $("#state"),
-            stateNcrSelect = $x("//*[.='NCR']"),
-            citySelect = $("#city"),
-            cityDelhiSelect = $x("//*[.='Delhi']"),
+            selectStateDropdown = $("#state"),
+            stateCityWrapper = $("#stateCity-wrapper"),
+            selectCityDropdown = $("#city"),
             submitButton = $("#submit");
 
 
@@ -33,9 +32,10 @@ public class RegistrationPage {
         open("automation-practice-form");
 
 
-
         return this;
-    }    public RegistrationPage hideBanner() {
+    }
+
+    public RegistrationPage hideBanner() {
 
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
@@ -75,19 +75,13 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setDateOfBirth(String day, String month, String year) {
+    public RegistrationPage setDateOfBirth(int day, String month, int year) {
         $("#dateOfBirthInput").click();
         calendar.setDate(day, month, year);
 
         return this;
     }
 
-    public RegistrationPage setDateOfBirthWithFaker(Integer valueDay, String valueMonth, int valueYear) {
-        $("#dateOfBirthInput").click();
-        calendar.setDateWithFaker(valueDay, valueMonth, valueYear);
-
-        return this;
-    }
 
     public RegistrationPage setSubjectValue(String value) {
         subjectInput.setValue(value);
@@ -119,17 +113,15 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setStateNCR() {
-        stateSelect.click();
-        stateNcrSelect.click();
-
+    public RegistrationPage setState(String state) {
+        selectStateDropdown.click();
+        stateCityWrapper.$(byText(state)).click();
         return this;
     }
 
-    public RegistrationPage setCityDelhi() {
-        citySelect.click();
-        cityDelhiSelect.click();
-
+    public RegistrationPage setCity(String city) {
+        selectCityDropdown.click();
+        stateCityWrapper.$(byText(city)).click();
         return this;
     }
 

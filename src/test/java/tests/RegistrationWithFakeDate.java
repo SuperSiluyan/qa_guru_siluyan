@@ -1,4 +1,4 @@
-
+package tests;
 
 import pages.components.GenerateTestData;
 import pages.RegistrationPage;
@@ -15,7 +15,12 @@ public class RegistrationWithFakeDate extends TestBase {
     @Test
     void fillTestForm() {
 
-        generateTestData.generateFakeSubject();
+        generateTestData.generateRandomSubject();
+        generateTestData.generateRandomMonth();
+        generateTestData.generateRandomGender();
+        generateTestData.generateRandomState();
+        generateTestData.generateRandomCity();
+
 
 
         // Заполнение формы
@@ -23,16 +28,16 @@ public class RegistrationWithFakeDate extends TestBase {
                 .setFirstName(generateTestData.fakeFirstName)
                 .setLastName(generateTestData.fakeLastName)
                 .setEmail(generateTestData.fakeUserEmail)
-                .setGender("Male")
+                .setGender(generateTestData.randomGender)
                 .setUserNumber(generateTestData.fakeUserNumber)
-                .setDateOfBirthWithFaker(generateTestData.fakeDayOfBirth, "March", generateTestData.fakeYearOfBirth)
-                .setSubjectValue(generateTestData.fakeSubject)
+                .setDateOfBirth(generateTestData.fakeDayOfBirth, generateTestData.randomMonth, generateTestData.fakeYearOfBirth)
+                .setSubjectValue(generateTestData.randomSubject)
                 .subjectClick()
                 .hobbiesClick()
                 .uploadPicture("b.jpg")
                 .setAddress(generateTestData.fakeStreetAddress)
-                .setStateNCR()
-                .setCityDelhi()
+                .setState(generateTestData.randomState)
+                .setCity(generateTestData.randomCity)
                 .clickSubmit();
 
 
@@ -41,13 +46,13 @@ public class RegistrationWithFakeDate extends TestBase {
         registrationPage.checkResult("Student Name", generateTestData.fakeFirstName + ' ' + generateTestData.fakeLastName)
                 .checkResult("Student Email", generateTestData.fakeUserEmail)
                 .checkResult("Mobile", generateTestData.fakeUserNumber)
-                .checkResult("Gender", "Male")
-                .checkResult("Date of Birth", generateTestData.fakeDayOfBirth + " March" + ',' + "19" + generateTestData.fakeYearOfBirth)
-                .checkResult("Subjects", generateTestData.fakeSubject)
+                .checkResult("Gender", generateTestData.randomGender)
+                .checkResult("Date of Birth", generateTestData.fakeDayOfBirth + " " + generateTestData.randomMonth + ',' + "19" + generateTestData.fakeYearOfBirth)
+                .checkResult("Subjects", generateTestData.randomSubject)
                 .checkResult("Hobbies", "Sports")
                 .checkResult("Picture", "b.jpg")
                 .checkResult("Address", generateTestData.fakeStreetAddress)
-                .checkResult("State and City", "NCR Delhi");
+                .checkResult("State and City", generateTestData.randomState + " " + generateTestData.randomCity);
     }
 
 

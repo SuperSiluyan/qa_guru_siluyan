@@ -1,4 +1,4 @@
-
+package tests;
 import pages.RegistrationPage;
 
 import tests.TestBase;
@@ -20,14 +20,14 @@ public class RegistrationWithPageObjects extends TestBase {
                 .setEmail("Siluyan_and@mail.ru")
                 .setGender("Male")
                 .setUserNumber("9011111111")
-                .setDateOfBirth("05", "March", "1991")
+                .setDateOfBirth(05, "March", 1991)
                 .setSubjectValue("Maths")
                 .subjectClick()
                 .hobbiesClick()
                 .uploadPicture("b.jpg")
                 .setAddress("Russia Yaroslavl")
-                .setStateNCR()
-                .setCityDelhi()
+                .setState("NCR")
+                .setCity("Delphi")
                 .clickSubmit();
 
 
