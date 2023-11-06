@@ -1,30 +1,28 @@
-
-import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import tests.RemoteTestBase;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.logevents.SelenideLogger.step;
 
 
-public class TestForm {
-    @BeforeAll
-    static void beforeAll() {
-        Configuration.baseUrl = "https://demoqa.com/";
+public class TestForm extends RemoteTestBase {
 
-        //Опционально, для отладки
-        Configuration.pageLoadStrategy = "eager";
-        Configuration.browserSize = "1920x1080";
-        Configuration.holdBrowserOpen =true;
-
-    }
-
+    @Tag("Simple")
     @Test
+    @DisplayName("Registration Positive Test")
     void fillTestForm() {
 
+
+        step("Open form", () -> {
         open("automation-practice-form");
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
+        });
+
+        step("Fill form", () -> {
         $("#firstName").setValue("Andrey");
         $("#lastName").setValue("Siluyanov");
         $("#userEmail").setValue("Siluyan_and@mail.ru");
@@ -44,8 +42,9 @@ public class TestForm {
         $("#city").click();
         $x("//*[.='Delhi']").click();
         $("#submit").click();
+    });
 
-        //Проверка текста
+        step("Verify modal", () -> {
         $(".modal-content").shouldHave(text("Andrey Siluyanov"));
         $(".modal-content").shouldHave(text("Siluyan_and@mail.ru"));
         $(".modal-content").shouldHave(text("Male"));
@@ -56,5 +55,6 @@ public class TestForm {
         $(".modal-content").shouldHave(text("b.jpg"));
         $(".modal-content").shouldHave(text("Russia Yaroslavl"));
         $(".modal-content").shouldHave(text("NCR Delhi"));
+});
     }
 }
