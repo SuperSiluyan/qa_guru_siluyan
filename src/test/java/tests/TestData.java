@@ -22,7 +22,6 @@ public class TestData {
             fakeYearOfBirth = faker.number().numberBetween(10, 99);
 
 
-
     public String randomSubject = generateRandomSubject();
     public String randomMonth = generateRandomMonth();
     public String randomState = generateRandomState();
