@@ -19,14 +19,14 @@ public class RegistrationWithPageObjects extends TestBase {
                 .setEmail("Siluyan_and@mail.ru")
                 .setGender("Male")
                 .setUserNumber("9011111111")
-                .setDateOfBirth(05, "March", 1991)
+                .setDateOfBirth(11, "March", 91)
                 .setSubjectValue("Maths")
                 .subjectClick()
                 .hobbiesClick()
                 .uploadPicture("b.jpg")
                 .setAddress("Russia Yaroslavl")
                 .setState("NCR")
-                .setCity("Delphi")
+                .setCity("Noida")
                 .clickSubmit();
 
 
@@ -36,7 +36,7 @@ public class RegistrationWithPageObjects extends TestBase {
                 .checkResult("Student Email", "siluyan_and@mail.ru")
                 .checkResult("Mobile", "9011111111")
                 .checkResult("Gender", "Male")
-                .checkResult("Date of Birth", "05 March,1991")
+                .checkResult("Date of Birth", "11 March,1991")
                 .checkResult("Subjects", "Maths")
                 .checkResult("Hobbies", "Sports")
                 .checkResult("Picture", "b.jpg")
