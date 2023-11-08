@@ -5,7 +5,7 @@ import tests.RemoteTestBase;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.logevents.SelenideLogger.step;
+import static io.qameta.allure.Allure.step;
 
 
 public class TestForm extends RemoteTestBase {
