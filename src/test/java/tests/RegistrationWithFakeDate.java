@@ -2,6 +2,7 @@ package tests;
 
 import pages.RegistrationPage;
 import org.junit.jupiter.api.Test;
+import testBases.TestBase;
 
 
 public class RegistrationWithFakeDate extends TestBase {

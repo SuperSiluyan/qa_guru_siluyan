@@ -1,19 +1,20 @@
+package tests;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import testBases.RemoteTestBase;
+import testBases.RemoteConfigTestBase;
 
-import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
 import static io.qameta.allure.Allure.step;
 
-
-public class TestForm extends RemoteTestBase {
-
-    @Tag("Simple")
+public class RegistrationConfigTest extends RemoteConfigTestBase {
+    @Tag("Configurate")
     @Test
     @DisplayName("Registration Positive Test")
-    void fillTestForm() {
+    void registrationWithConfigTest() {
 
 
         step("Open form", () -> {
@@ -57,4 +58,5 @@ public class TestForm extends RemoteTestBase {
             $(".modal-content").shouldHave(text("NCR Delhi"));
         });
     }
+
 }
