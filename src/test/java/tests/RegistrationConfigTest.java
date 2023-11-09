@@ -13,7 +13,7 @@ import static io.qameta.allure.Allure.step;
 public class RegistrationConfigTest extends RemoteConfigTestBase {
     @Tag("Configurate")
     @Test
-    @DisplayName("Registration Positive Test")
+    @DisplayName("Registration Positive Test With Properties")
     void registrationWithConfigTest() {
 
 

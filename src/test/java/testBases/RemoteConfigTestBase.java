@@ -15,7 +15,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 public class RemoteConfigTestBase {
     @BeforeAll
     static void beforeAll() {
-        Configuration.baseUrl = System.getProperty("baseUrl", "https://demoqaqaqaqa.com/");;
+        Configuration.baseUrl = System.getProperty("baseUrl", "https://demoqaqaqaqa123123.com/");;
         //Опционально, для отладки
         Configuration.pageLoadStrategy = "eager";
         Configuration.browserSize = "1920x1080";
