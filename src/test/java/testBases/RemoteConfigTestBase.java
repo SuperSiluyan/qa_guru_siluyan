@@ -15,13 +15,12 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 public class RemoteConfigTestBase {
     @BeforeAll
     static void beforeAll() {
-        Configuration.baseUrl = System.getProperty("baseUrl", "https://demoqaqaqaqa123123.com/");;
-        //Опционально, для отладки
+        Configuration.baseUrl = System.getProperty("baseUrl", "https://demoqaqaqaqa123123.com/");
         Configuration.pageLoadStrategy = "eager";
-        Configuration.browserSize = "1920x1080";
-//        Configuration.holdBrowserOpen = true;
-
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        Configuration.remote = System.getProperty("SelenoidAddress", "ahahahah");
+        Configuration.browser = System.getProperty("browserName", "opera");
+        Configuration.browserVersion = System.getProperty("browserVersion", "100.0");
+        Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
 
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
