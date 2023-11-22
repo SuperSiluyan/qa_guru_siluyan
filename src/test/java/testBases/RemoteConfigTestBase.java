@@ -2,8 +2,10 @@ package testBases;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import config.WebConfig;
 import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
+import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -15,12 +17,14 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 public class RemoteConfigTestBase {
     @BeforeAll
     static void beforeAll() {
-        Configuration.baseUrl = System.getProperty("baseUrl", "https://demoqaqaqaqa123123.com/");
+        WebConfig config = ConfigFactory.create(WebConfig.class, System.getProperties());
+        Configuration.baseUrl = config.getbaseUrl();
         Configuration.pageLoadStrategy = "eager";
-        Configuration.remote = System.getProperty("selenoidAddress", "ahahahah");
-        Configuration.browser = System.getProperty("browserName", "opera");
-        Configuration.browserVersion = System.getProperty("browserVersion", "100.0");
+        Configuration.remote = config.getselenoidAddress();
+        Configuration.browser = config.getbrowserName();
+        Configuration.browserVersion = config.getbrowserVersion();
         Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
+
 
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
