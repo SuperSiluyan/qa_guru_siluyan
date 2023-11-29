@@ -18,6 +18,7 @@ public interface WebConfig extends Config{
 
 
     @Key("browserVersion")
+    @DefaultValue("100.0")
     String getbrowserVersion();
 
 
